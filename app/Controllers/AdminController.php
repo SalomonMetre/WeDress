@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\CategoryModel;
 use App\Models\ItemModel;
 use App\Models\OrderDetailsModel;
+use App\Models\ProductTokenModel;
 use App\Models\UserModel;
 use App\Models\SubcategoryModel;
 use App\Models\UserTokenModel;
@@ -288,7 +289,7 @@ class AdminController extends BaseController
     // generating a user access token
     public function generateToken(){
         $data=[
-            'username'=>$_POST['userName'],
+            'user_id'=>$_POST['userId'],
             'key'=>$_POST['key'],
             'added_by'=>2,
             'is_deleted'=>0,
@@ -301,6 +302,24 @@ class AdminController extends BaseController
         echo view('admin/generateTokenPage');
     }
 
+    // generate product API token
+    public function generateTokenProduct(){
+        $data=[
+            'user_id'=>$_POST['userId'],
+            'product_name'=>$_POST['productName'],
+            'token'=>$_POST['token'],
+            'expires_on'=>$_POST['expiry_date'],
+            'is_deleted'=>0,
+        ];
+        $productTokeModel=new ProductTokenModel();
+        $productTokeModel->saveProductToken($data);
+        echo '<script>';
+        echo 'alert(\'Product API token successfully generated !\');';
+        echo '</script>';
+        echo view('admin/generateTokenProductPage');
+    }
+
+    // viewing analytics on products
     public function viewAnalytics(){
         $orderDetailsModel=new OrderDetailsModel();
         

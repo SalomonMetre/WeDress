@@ -35,6 +35,12 @@ class LoginModel extends Model
     {
         $this->builder->delete(['userlogin_id'=>$id]);
     }
+
+    public function lastUserLogin(){
+        $userModel=new UserModel();
+        $id=$this->builder()->get()->getLastRow()->user_id;
+        return $userModel->getUserWithId($id);
+    }
 }
 
 ?>

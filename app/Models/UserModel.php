@@ -41,6 +41,22 @@ class UserModel extends Model
         $this->builder->where('user_id',$user_id)->update($data);
     }
 
+    public function getUserWithEmail($email){
+        return $this->builder->where(['email'=>$email])->get()->getResultArray();
+    }
+
+    public function getUserWithGender($gender){
+        return $this->builder()->where(['gender'=>$gender])->get()->getResultArray();
+    }
+
+    public function getUserWhereIdIn($ids){
+        return $this->builder()->whereIn('user_id',$ids)->get()->getResultArray();
+    }
+
+    public function getUserWithGenderAndFilter($gender,$filter){
+        return $this->builder()->like('first_name',$filter)->orLike('last_name',$filter)->where('gender',$gender)->get()->getResultArray();
+    }
+
 }
 
 ?>

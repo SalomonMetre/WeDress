@@ -52,9 +52,30 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-9 main-content">
-                <h1 style="color:white;"> Welcome to Our API Documentation <?php $session=session(); echo $session->get('userName') ?> !</h1> <br> <br>
-                <p style="color: orange; font-size:18px;"> This API documentation provides you with the necessary guidance for you to call and consume data from our API using specific API access keys and/or tokens.</p> <br> <br>
-                <p style="color: orange; font-size:18px;"> Check the different options in the left sidebar to know more about what our API provides and how to consume the data. </p>
+                
+            <!-- Chapter 15 -->
+            <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    15. Accessing all transaction details
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this secure endpoint, use your secure API token, and call the API using the link <span style="color: green;"> localhost:8080/api/transactions/?token=[yourToken]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case9.png') ?>" alt="Chap 9" height="25%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
+                <!-- Chapter 16 -->
+            <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    16. Accessing transactions using date range
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this insecure endpoint, use your general Access key, and call the API using the link <span style="color: green;"> localhost:8080/api/transactions/?access_key=[yourAccessKey]&date_start=[yourStartDate]&date_end=[yourEndDate]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case16.png') ?>" alt="Chap 9" height="25%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
+                <!-- Chapter 17 -->
+            <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    17. Accessing transactions using product id
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this insecure endpoint, use your general Access key, and call the API using the link <span style="color: green;"> localhost:8080/api/transactions/?access_key=[yourAccessKey]&product_id=[product_id]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case17.png') ?>" alt="Chap 9" height="25%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
             </div>
         </div>
     </div>

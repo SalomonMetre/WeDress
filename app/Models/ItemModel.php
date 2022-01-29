@@ -38,6 +38,10 @@ class ItemModel extends Model{
         return $this->builder()->where(['product_id'=>$id])->get()->getResultArray()[0];
     }
 
+    public function getItemWhereIdIn($ids){
+        return $this->builder()->whereIn('product_id',$ids)->get()->getResultArray();
+    }
+
     public function getAllItemsWithDetails($subcategory_id,$price,$order){
         if($price!=0){
             return $this->builder()->where(['subcategory_id'=>$subcategory_id,'unit_price'=>$price])->orderBy('unit_price',$order==1?'DESC':'ASC')->get()->getResultArray();
@@ -47,6 +51,38 @@ class ItemModel extends Model{
 
     public function getDistinctPrices(){
         return $this->builder()->select('unit_price')->orderBy('unit_price','ASC')->distinct()->get()->getResultArray();
+    }
+
+    public function getItemsWithSubcategory($subcat_id){
+        return $this->builder()->where(['subcategory_id'=>$subcat_id])->get()->getResultArray();
+    }
+
+    public function getProductsPurchasedByUser($id){
+        $orderDetailsModel=new OrderDetailsModel();
+        $ids=$orderDetailsModel->productIdsByCustomerId($id);
+        $final_ids = array();
+        foreach ($ids as $id) {
+            foreach ($id as $id_2) {
+                array_push($final_ids, $id_2);
+            }
+        }
+        return $this->getItemWhereIdIn($final_ids);
+    }
+
+    public function getProductsBySalesVolume($salesVolume){
+        $orderDetailsModel=new OrderDetailsModel();
+        $ids=$orderDetailsModel->productIdsBySalesVolumes($salesVolume);
+        $final_ids = array();
+        foreach ($ids as $id) {
+            foreach ($id as $id_2) {
+                array_push($final_ids, $id_2);
+            }
+        }
+        return $this->getItemWhereIdIn($final_ids);
+    }
+
+    public function productsWhereNameLike($name){
+        return $this->builder()->like('product_name',$name,'both')->get()->getResultArray();
     }
     
 }

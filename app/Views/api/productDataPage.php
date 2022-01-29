@@ -52,9 +52,55 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-9 main-content">
-                <h1 style="color:white;"> Welcome to Our API Documentation <?php $session=session(); echo $session->get('userName') ?> !</h1> <br> <br>
-                <p style="color: orange; font-size:18px;"> This API documentation provides you with the necessary guidance for you to call and consume data from our API using specific API access keys and/or tokens.</p> <br> <br>
-                <p style="color: orange; font-size:18px;"> Check the different options in the left sidebar to know more about what our API provides and how to consume the data. </p>
+
+                <!-- Chapter 9 -->
+                <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    9. Accessing all products
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this insecure endpoint, use your general API access key, and call the API using the link <span style="color: green;"> localhost:8080/api/products/?access_key=[yourAccessKey]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case9.png') ?>" alt="Chap 9" height="13%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
+                <!-- Chapter 10 -->
+                <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    10. Accessing a product using an id
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this insecure endpoint, use your general API access key, and call the API using the link <span style="color: green;"> localhost:8080/api/products/?access_key=[yourAccessKey]&product_id=[yourProductId]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case10.png') ?>" alt="Chap 9" height="13%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
+                <!-- Chapter 11 -->
+                <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    11. Accessing a product by subcategory
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this insecure endpoint, use your general API access key, and call the API using the link <span style="color: green;"> localhost:8080/api/products/?access_key=[yourAccessKey]&subcategory_id=[yourProductId]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case11.png') ?>" alt="Chap 9" height="13%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
+                <!-- Chapter 12 -->
+                <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    12. Accessing a list of products purchased by a user
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this secure endpoint, use your secure API token, and call the API using the link <span style="color: green;"> localhost:8080/api/products/?token=[yourToken]&user_id=[yourUserId]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case12.png') ?>" alt="Chap 9" height="13%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
+                <!-- Chapter 13 -->
+                <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    13. Accessing a list of products by sales volume
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this secure endpoint, use your secure API token, and call the API using the link <span style="color: green;"> localhost:8080/api/products/?token=[yourToken]&sales_volume=[salesVolume]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case13.png') ?>" alt="Chap 9" height="13%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
+                <!-- Chapter 14 -->
+                <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    14. Accessing a list of products by name or any sequence of letters
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> For this insecure endpoint, use your general API access key, and call the API using the link <span style="color: green;"> localhost:8080/api/products/?access_key=[yourAccessKey]&name=[productName]</span> as illustrated in this image below:
+                </p>
+                <img src="<?= base_url('api_doc_images/Case14.png') ?>" alt="Chap 9" height="13%" width="100%" style="align-items: center; align-self: center; align-content: center;"> <br> <br>
+
             </div>
         </div>
     </div>

@@ -64,11 +64,11 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-9 main-content">
-                <div id="title"> Generate User Access Token </div>
+                <div id="title"> Generate User API access key </div>
                 <div>
                     <form action="<?= base_url('generateToken') ?>" method="POST">
                         <div>
-                            <input type="text" name="userName" placeholder="Enter Username">
+                            <input type="text" name="userId" placeholder="Enter User Id">
                         </div> <br>
                         <div>
                             <input type="text" name="key" id="key">

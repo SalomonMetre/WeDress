@@ -9,6 +9,8 @@ use App\Models\OrderDetailsModel;
 use App\Models\OrderModel;
 use App\Models\SubcategoryModel;
 use App\Models\PaymentTypeModel;
+use App\Models\ProductTokenModel;
+use App\Models\UserTokenModel;
 
 class UserController extends BaseController
 {
@@ -64,8 +66,9 @@ class UserController extends BaseController
     public function viewReceipt(){
         $orderDetailsModel=new OrderDetailsModel();
         $orderModel=new OrderModel();
-        $sum=$orderModel->getOrderWithId(session()->get('order_id'))[0]['order_amount'];
-        session()->set('sum',$sum??0);
+        $order_id=session()->get('order_id');
+        $sum=$orderModel->getOrderWithId($order_id)??['order_amount'];
+        session()->set('sumOrder',$sum??0);
         $purchasedItems=$orderDetailsModel->getOrderDetailsReceipt();
         session()->set('purchasedItems',$purchasedItems);
         echo view('user/viewReceipt');
@@ -82,7 +85,7 @@ class UserController extends BaseController
         $password=$_POST['password'];
         $confpassword=$_POST['confpassword'];
         $gender=$_POST['gender'];
-        $role=$_POST['role']=='User'?1:2;
+        $role=$_POST['role']=='User'?1:1;
 
         if($password==$confpassword)
         {
@@ -94,7 +97,7 @@ class UserController extends BaseController
                 'gender'=>$gender,
                 'role'=>$role,
                 'is_deleted'=>0,
-                'approved'=>$role==1?1:0,
+                'approved'=>$role==1?1:1,
             ];
 
             $userModel=new UserModel();
@@ -131,6 +134,9 @@ class UserController extends BaseController
         $userModel=new UserModel();
         $tableResult=$userModel->getData($conditions);
 
+        $accessKeyModel=new UserTokenModel();
+        $productTokenModel=new ProductTokenModel();
+
         if(count($tableResult)>0)
         {
             // a few session data
@@ -155,10 +161,14 @@ class UserController extends BaseController
                 $orderModel=new OrderModel();
                 $nb_orders=count($orderModel->getAllOrders());
                 session()->set('order_id',$nb_orders+1);
-                echo view('user/homePage');
+                $user_id=session()->get('user_id');
+                session()->set('api_access_key',$accessKeyModel->getAccessKey($user_id));
+                session()->set('tokens',$productTokenModel->getTokensWithId($user_id));
+                echo $user_id;
+                return redirect()->route('userHomePage');
             }
             else{
-                echo view('admin/homePage');
+                return redirect()->route('adminHomePage');
             }
         }
         else{
@@ -177,7 +187,7 @@ class UserController extends BaseController
         $id=$session->get('userlogin_id');
         $loginModel=new LoginModel();
         $loginModel->updateData($id,$data);
-        $session->destroy();
+        $session->stop();
         echo view('landing_view');
     }
 

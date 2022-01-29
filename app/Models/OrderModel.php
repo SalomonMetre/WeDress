@@ -24,7 +24,7 @@ class OrderModel extends Model{
     }
 
     public function getOrderWithId($id){
-        return $this->builder()->where(['order_id'=>$id])->get()->getResultArray();
+        return $this->builder()->where(['order_id'=>$id])->get()->getResultArray()??[0];
     }
 
     public function updateOrder($id,$data){

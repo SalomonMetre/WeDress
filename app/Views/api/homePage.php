@@ -37,6 +37,7 @@
             <div class="col-sm-12 col-md-7">
                 <ul> 
                     <h2 style="color:orange; margin-top:5%; font-weight: bold;"> API Documentation </h2>
+                    <a href="<?= base_url('/') ?>" style="float: right;color:orange;"> Go back </a>
                 </ul>
             </div>
         </div>

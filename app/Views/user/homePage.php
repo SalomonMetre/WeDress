@@ -55,8 +55,13 @@
             </div>
             <div class="col-sm-12 col-md-9 main-content">
                 <h1 style="color:white;"> Welcome, <?php $session=session(); echo $session->get('userName') ?>!</h1>
-                <span style="color: #FF7F00; font-size: 16px;"> <i class="fa fa-hand-o-left" aria-hidden="true" style="color:white;"></i> View our items, purchase them and give us a feedback ! </span>
+                <span style="color: #FF7F00; font-size: 16px;"> <i class="fa fa-hand-o-left" aria-hidden="true" style="color:white;"></i> View our items, purchase them and give us a feedback ! </span> <br> <br> <br>
+                <div style="background-color: #273c75;font-family:'Courier New', Courier, monospace;padding:2%;color:yellow;font-size:18px; font-weight:bold;">
+                    Special instructions for the API keys and tokens
+                </div> <br>
+                <p style="color: white; font-size: 15px; font-family:'Courier New', Courier, monospace ; "> If you want to access insecure endpoints of our API, use your general api access key <span style="color:green;"> <?= session()->get('api_access_key')[0]['key']??'User access key' ?> </span>, to access user services use <span style="color:green;"> <?= session()->get('tokens')[0]['token']??'user token' ?> </span>, for product services use <span style="color:green;"> <?= session()->get('tokens')[1]['token']??'product token' ?> </span> and for consuming purchases data use <span style="color:green;"> <?= session()->get('tokens')[2]['token']??'Purchase token' ?> </span></p>
             </div>
+            
         </div>
     </div>
 </body>

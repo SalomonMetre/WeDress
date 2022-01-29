@@ -79,6 +79,7 @@ $admin_routes=[
     'editItem/(:any)'=>'AdminController::editItem/$1',
 
     'generateToken'=>'AdminController::generateToken',
+    'generateTokenProduct'=>'AdminController::generateTokenProduct',
     
 ];
 
@@ -110,7 +111,9 @@ foreach($user_routes as $routeName=>$controllerFunction)
 
 // my api routes
 $api_routes=[
-    'users'=>'ApiController::getAllUsers',
+    'users'=>'ApiController::getUsers',
+    'products'=>'ApiController::getProducts',
+    'transactions'=>'ApiController::getTransactions',
 ];
 foreach($api_routes as $routeName=>$controllerFunction){
     $routes->add('api/'.$routeName,$controllerFunction);

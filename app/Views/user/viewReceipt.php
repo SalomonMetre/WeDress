@@ -78,7 +78,7 @@
                             }
                         ?>
                         <tr>
-                            <td colspan="4" style="padding-left:40%; padding-right:40%;"> Total : <?= session()->get('sum') ?> </td>
+                            <td colspan="4" style="padding-left:40%; padding-right:40%;"> Total : <?= session()->get('sumOrder')[0]['order_amount']??0 ?> </td>
                         </tr>
                     </tbody>
                 </table>
